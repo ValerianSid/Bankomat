@@ -32,6 +32,7 @@ public class CardServiceImpl implements CardService{
     }
 
     public String addCash(int ammount) {
+        authorizationService.logIn(card, Pin);
         card.setCashAmount(card.getCashAmount() + ammount);
         return "Сумма добавлена на счет";
     }
