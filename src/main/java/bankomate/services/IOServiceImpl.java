@@ -5,22 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class IOServiceImpl implements IOService{
+    private BufferedReader reader;
 
+    public IOServiceImpl(){
+        reader = new BufferedReader(new InputStreamReader(System.in));
+    }
     @Override
-    public String read() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inputString = new String();
-        try {
-            inputString = reader.readLine();
-        } catch (IOException ex) {
-            System.out.println("Произошла ошибка ввода/вывода");
-        }
-        return inputString;
-
+    public String read() throws IOException {
+        return reader.readLine();
     }
 
     @Override
-    public String write(String message) {
-        return System.out.println(message);
+    public void write(String message) {
+        System.out.println(message);
     }
 }
